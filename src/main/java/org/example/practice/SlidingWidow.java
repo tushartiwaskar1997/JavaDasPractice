@@ -1,6 +1,5 @@
 package org.example.practice;
 
-import java.sql.PreparedStatement;
 import java.util.*;
 
 public class SlidingWidow {

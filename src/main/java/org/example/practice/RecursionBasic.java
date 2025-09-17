@@ -1,8 +1,6 @@
 package org.example.practice;
 
-import java.sql.Statement;
 import java.util.List;
-import java.util.random.RandomGenerator;
 
 public class RecursionBasic {
 

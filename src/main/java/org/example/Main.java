@@ -6,11 +6,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import static org.example.practice.ArraysSorting.*;
-import static org.example.practice.BitManipulation.*;
 import static org.example.practice.RecursionBasic.*;
 import static org.example.practice.SimpleHelloWorld.printHello;
 import static org.example.practice.SlidingWidow.*;
-import static org.example.practice.SomeRandomProblems.*;
 import static org.example.practice.HashMpaPractice.*;
 
 public class Main {
@@ -147,7 +145,10 @@ public class Main {
         countCharacterFrequency("aadfasfsf");
         findingFirstNoRepeatingCharacter("aabb");
         String[] StringArrayForAnagraps = {"eat","tea","tan","ate","nat","bat"};
+        findTheMaximunNumberOfTimesNumberRepeated(arraysForDistinctElements);
+        removeDuplicatesFromArraysUsingLinkHashSet(arraysForDistinctElements);
         groupOfAnagrams(StringArrayForAnagraps);
+        checkIfTokenIsBalanced("");
         Runnable r =  ()-> {
             System.out.println("this is testing of lambda.");
         };

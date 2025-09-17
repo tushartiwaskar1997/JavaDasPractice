@@ -1,11 +1,16 @@
 package org.example.practice;
 
+import static org.example.practice.SlidingWidow.countTheOccurrencesOfAnagrams;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.LinkedHashSet;
 import java.util.List;
-import java.util.Map;
 import java.util.Map.Entry;
+import java.util.stream.*;
+
+import javax.print.attribute.IntegerSyntax;
 
 public class HashMpaPractice {
 
@@ -83,4 +88,40 @@ public class HashMpaPractice {
         System.out.println(map);
     }
 
+    public static void findTheMaximunNumberOfTimesNumberRepeated(int[] arr) {
+        HashMap<Integer, Integer> map = new HashMap<>();
+        for (int i = 0; i < arr.length; i++) {
+            map.put(arr[i], map.getOrDefault(arr[i], 0) + 1);
+        }
+        int max = map.values().stream().max(Integer::compareTo).orElse(0);
+        System.out.println(max + " ----> maximum repeated element.");
+    }
+
+    public static void removeDuplicatesFromArraysUsingLinkHashSet(int[] arr) {
+
+        LinkedHashSet<Integer> linkedHashSet = new LinkedHashSet<>();
+        for (Integer integer : arr) {
+            linkedHashSet.add(integer);
+        }
+        System.out.println(Arrays.toString(linkedHashSet.toArray()));
+    }
+
+    public static void checkIfTokenIsBalanced(String str) {
+        int[] arr = new int[26];
+        for (Character ch : str.toLowerCase().toCharArray()) {
+            arr[ch - 'a']++;
+        }
+        int count = -1;
+
+        for (int frequency : arr) {
+            if (frequency != 0) {
+                if (count == -1) {
+                    count = frequency;
+                } else if (count != frequency) {
+                    System.out.println("bad token.!");
+                }
+            }
+        }
+        System.out.println("good token.");
+    }
 }
