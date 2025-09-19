@@ -5,8 +5,10 @@ import static org.example.practice.SlidingWidow.countTheOccurrencesOfAnagrams;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.TreeSet;
 import java.util.Map.Entry;
 import java.util.stream.*;
 
@@ -123,5 +125,52 @@ public class HashMpaPractice {
             }
         }
         System.out.println("good token.");
+    }
+
+    public static void combineStringToDistinctString(String s1, String s2) {
+        TreeSet<Character> treeSet = new TreeSet<>();
+        String combinedString = s1 + s2;
+        for (int i = 0; i < combinedString.length(); i++) {
+            treeSet.add(combinedString.charAt(i));
+        }
+        StringBuilder result = new StringBuilder();
+        for (Character character : treeSet) {
+            result.append(character);
+        }
+        System.out.println(result + " ---> is your distinct string.");
+    }
+
+    public static String checkIfStringIsIsogram(String str) {
+        HashSet<Character> set = new HashSet<>();
+        for (int i = 0; i < str.length(); i++) {
+            if (set.contains(str.charAt(i))) {
+                System.out.println("False. IT is not an isogram.");
+                return "";
+            } else {
+                set.add(str.charAt(i));
+            }
+        }
+        System.out.println("True. IT is an isogram.");
+        return null;
+    }
+
+    public static String checkIfStringsAreValidAnagram(String s1, String s2) {
+        int[] countArr = new int[26];
+        if (s1.length() != s2.length()) {
+            System.out.println("String are  not anagram.");
+            return null;
+        }
+        for (int i = 0; i < s1.length(); i++) {
+            countArr[s1.charAt(i) - 'a']++;
+            countArr[s2.charAt(i) - 'a']--;
+        }
+        for (int i = 0; i < 26; i++) {
+            if (countArr[i] < 0 || countArr[i] > 0) {
+                System.out.println("String are  not anagram.");
+                return null;
+            }
+        }
+        System.out.println(" String are  anagram.");
+        return null;
     }
 }
