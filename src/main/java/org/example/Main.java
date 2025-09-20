@@ -159,6 +159,14 @@ public class Main {
         combineStringToDistinctString("aaab", "bjjj");
         checkIfStringIsIsogram("ab");
         checkIfStringsAreValidAnagram("anagrram","nagaram");
+        int[] apa= {1 ,2 ,1 ,3,2, 4, 3};
+        countDistinctElementInGivenWindow(apa,3);
+        findFirstUniqueInteger(apa);
+        String[] stringFruits =  {"apple", "banana", "apple", "orange", "banana", "apple", "mango", "mango", "banana"};
+        findKthMostFrequetWord(stringFruits);
+        findAllTheAnagramsInStringMatchingPattern("bacdgabcda","abcd");
+        findAnagramAsPerPattern("bacdgabcda","abcd");
+        longestPalindromeNumber("bbde");
         Runnable r = () -> {
             System.out.println("this is testing of lambda.");
         };
