@@ -172,5 +172,15 @@ public class Main {
         };
         r.run();
         HashMap<String, Integer> wordCount = new HashMap<>();
+
+        Integer  a =1, b=1, c=1000 , d =1000;
+
+        if(a==b){
+            System.out.println("true for a = b.");
+        }
+        if(c==d){
+            System.out.println("c==d");   // this is false becase Integer hasve 128 to -127
+        }
+
     }
 }

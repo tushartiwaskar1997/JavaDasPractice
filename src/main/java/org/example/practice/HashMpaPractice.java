@@ -1,8 +1,4 @@
 package org.example.practice;
-
-import static org.example.practice.RecursionBasic.recursionBasic;
-import static org.example.practice.SlidingWidow.countTheOccurrencesOfAnagrams;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -14,10 +10,6 @@ import java.util.Map;
 import java.util.PriorityQueue;
 import java.util.TreeSet;
 import java.util.Map.Entry;
-import java.util.stream.*;
-
-import javax.print.DocFlavor.STRING;
-import javax.print.attribute.IntegerSyntax;
 
 public class HashMpaPractice {
 
@@ -78,9 +70,7 @@ public class HashMpaPractice {
     }
 
     public static void groupOfAnagrams(String[] stringArrays) {
-
         HashMap<String, List<String>> map = new HashMap<>();
-
         for (String str : stringArrays) {
             char[] charArrays = str.toCharArray();
             Arrays.sort(charArrays);
@@ -88,9 +78,7 @@ public class HashMpaPractice {
             if (!map.containsKey(key)) {
                 map.put(key, new ArrayList<>());
             }
-
             map.get(key).add(str);
-
         }
         System.out.println(map);
     }
@@ -105,7 +93,6 @@ public class HashMpaPractice {
     }
 
     public static void removeDuplicatesFromArraysUsingLinkHashSet(int[] arr) {
-
         LinkedHashSet<Integer> linkedHashSet = new LinkedHashSet<>();
         for (Integer integer : arr) {
             linkedHashSet.add(integer);
