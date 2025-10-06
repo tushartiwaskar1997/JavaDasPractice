@@ -10,6 +10,7 @@ import static org.example.practice.RecursionBasic.*;
 import static org.example.practice.SimpleHelloWorld.printHello;
 import static org.example.practice.SlidingWidow.*;
 import static org.example.practice.HashMpaPractice.*;
+import static org.example.practice.LInkList.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -158,29 +159,47 @@ public class Main {
         checkIfTokenIsBalanced("");
         combineStringToDistinctString("aaab", "bjjj");
         checkIfStringIsIsogram("ab");
-        checkIfStringsAreValidAnagram("anagrram","nagaram");
-        int[] apa= {1 ,2 ,1 ,3,2, 4, 3};
-        countDistinctElementInGivenWindow(apa,3);
+        checkIfStringsAreValidAnagram("anagrram", "nagaram");
+        int[] apa = { 1, 2, 1, 3, 2, 4, 3 };
+        countDistinctElementInGivenWindow(apa, 3);
         findFirstUniqueInteger(apa);
-        String[] stringFruits =  {"apple", "banana", "apple", "orange", "banana", "apple", "mango", "mango", "banana"};
+        String[] stringFruits = { "apple", "banana", "apple", "orange", "banana", "apple", "mango", "mango", "banana" };
         findKthMostFrequetWord(stringFruits);
-        findAllTheAnagramsInStringMatchingPattern("bacdgabcda","abcd");
-        findAnagramAsPerPattern("bacdgabcda","abcd");
+        findAllTheAnagramsInStringMatchingPattern("bacdgabcda", "abcd");
+        findAnagramAsPerPattern("bacdgabcda", "abcd");
         longestPalindromeNumber("bbde");
         Runnable r = () -> {
             System.out.println("this is testing of lambda.");
         };
         r.run();
         HashMap<String, Integer> wordCount = new HashMap<>();
+        Integer a = 1, b = 1, c = 1000, d = 1000;
 
-        Integer  a =1, b=1, c=1000 , d =1000;
-
-        if(a==b){
+        if (a == b) {
             System.out.println("true for a = b.");
         }
-        if(c==d){
-            System.out.println("c==d");   // this is false becase Integer hasve 128 to -127
+        if (c == d) {
+            System.out.println("c==d"); // this is false becase Integer hasve 128 to -127
         }
+        // Linklist
+        int[] arrForLinkList = { 1, 2, 4};
+        traversalOfLinkList(creatLinkListFromArray(arrForLinkList, 1));
+        int[] arrWithDuplicates = { 5, 5, 5, 1, 1, 2, 3, 4, 3 };
+        removeTheDuplicatesFromLinkList(creatLinkListFromArray(arrWithDuplicates, 1));
+        revrseTheLinkList(creatLinkListFromArray(arrForLinkList, 1));
+        findMiddleAndPlaceItToStart(creatLinkListFromArray(arrForLinkList, 1));
+        checkListIsCircularOrNot(creatLinkListFromArray(arrForLinkList, 1));
+        insertAnElementInSortedCurcularLinkList(creatLinkListFromArray(arrForLinkList, 3),5);
+        
+    }
+}
 
+class Node {
+    int data;
+    Node next;
+    Node prev;
+
+    Node(int data) {
+        this.data = data;
     }
 }
