@@ -1,5 +1,6 @@
 package org.example;
 
+import org.example.practice.Node;
 import org.example.practice.classB;
 
 import java.util.ArrayList;
@@ -182,24 +183,27 @@ public class Main {
             System.out.println("c==d"); // this is false becase Integer hasve 128 to -127
         }
         // Linklist
-        int[] arrForLinkList = { 1, 2, 4};
+        int[] arrForLinkList = { 1, 2, 4 };
         traversalOfLinkList(creatLinkListFromArray(arrForLinkList, 1));
         int[] arrWithDuplicates = { 5, 5, 5, 1, 1, 2, 3, 4, 3 };
         removeTheDuplicatesFromLinkList(creatLinkListFromArray(arrWithDuplicates, 1));
         revrseTheLinkList(creatLinkListFromArray(arrForLinkList, 1));
         findMiddleAndPlaceItToStart(creatLinkListFromArray(arrForLinkList, 1));
-        checkListIsCircularOrNot(creatLinkListFromArray(arrForLinkList, 1));
-        insertAnElementInSortedCurcularLinkList(creatLinkListFromArray(arrForLinkList, 3),5);
-        
-    }
-}
+        checkListIsCircularOrNot(creatLinkListFromArray(arrForLinkList, 3));
+        // insertAnElementInSortedCurcularLinkList(creatLinkListFromArray(arrForLinkList,
+        // 3),5);
 
-class Node {
-    int data;
-    Node next;
-    Node prev;
-
-    Node(int data) {
-        this.data = data;
+        deleteTheLastNodeFromTheLinkList(creatLinkListFromArray(arrForLinkList, 1), 1);
+        int[] arrayToDeleteKthElement = { 3, 1, 3, 2, 4 };
+        deleteThekTHNodeFromTheLinkList(creatLinkListFromArray(arrayToDeleteKthElement, 1), 2, 5);
+        Node node1 =  new Node(1);
+        node1.next =  new Node(2);
+        node1.next.next =  new Node(3);
+        node1.next.next.next = new Node(4);
+        node1.next.next.next.next  = new Node(5);
+        node1.next.next.next.next.next= new Node(6);
+        deleteTheNodeWhenYouDontKnowHead(node1.next.next, node1); // Deleting node 3
+        int[] arrThatNeedToPivot = { 3 ,5 ,8 ,5 ,10, 2, 1 };
+        reorderTheListWithRelationToAnInputMaintainTheOrder(5 , creatLinkListFromArray(arrThatNeedToPivot, 1));
     }
 }

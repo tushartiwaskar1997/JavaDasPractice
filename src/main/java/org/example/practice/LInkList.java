@@ -1,10 +1,8 @@
 package org.example.practice;
 
-import static org.example.practice.HashMpaPractice.longestPalindromeNumber;
-import static org.example.practice.RecursionBasic.countDigitsInNumber;
-
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 
 public class LInkList {
 
@@ -154,21 +152,18 @@ public class LInkList {
     }
 
     public static void insertAnElementInSortedCurcularLinkList(Node head, int number) {
-
         Node previousPointer = head;
         Node currentNode = head;
         Node nodeToAdd = new Node(number);
-
         while (currentNode != null && currentNode.next.data < number) {
             previousPointer = currentNode;
             currentNode = currentNode.next;
         }
-        System.out.println(previousPointer.next.next.data+"-------------------");
-        if (previousPointer.next.next.data!= nodeToAdd.data) {
+        System.out.println(previousPointer.next.next.data + "-------------------");
+        if (previousPointer.next.next.data != nodeToAdd.data) {
             nodeToAdd.next = currentNode.next;
             currentNode.next = nodeToAdd;
         }
-
         currentNode = null;
         currentNode = head;
         while (currentNode != null) {
@@ -178,18 +173,112 @@ public class LInkList {
                 break;
             }
         }
-
     }
 
-}
+    public static void deleteTheLastNodeFromTheLinkList(Node head, int n) {
+        Node j = head;
+        while (j.next.next != null) {
+            j = j.next;
+        }
+        j.next = null;
+        Node i = head;
+        while (i != null) {
+            System.out.println(i.data + " ----");
+            i = i.next;
+        }
+    }
 
-class Node {
+    public static void deleteThekTHNodeFromTheLinkList(Node head, int k, int totalNumber) {
+        if (head == null || k <= 0 || k > totalNumber) {
+            System.out.println("Invalid input");
+            return;
+        }
+        if (k == totalNumber) {
+            head = head.next;
+            while (head != null) {
+                System.out.println(head.data + " K remove ----");
+                head = head.next;
+            }
+            return;
+        }
+        int nodeToRemove = totalNumber - k - 1;
+        Node j = head;
+        while (nodeToRemove > 0) {
+            j = j.next;
+            nodeToRemove--;
+        }
+        j.next = j.next.next;
+        Node i = head;
+        while (i != null) {
+            System.out.println(i.data + " K remove ----");
+            i = i.next;
+        }
+    }
 
-    int data;
-    Node next;
-    Node prev;
+    public static void deleteTheNodeWhenYouDontKnowHead(Node nodetoDelete, Node head) {
+        // use head for iteration.
+        if (nodetoDelete.next == null) {
+            System.out.println("invalid Node.");
+            return;
+        }
 
-    Node(int data) {
-        this.data = data;
+        while (nodetoDelete.next.next != null) {
+            nodetoDelete.data = nodetoDelete.next.data;
+            nodetoDelete = nodetoDelete.next;
+        }
+        nodetoDelete.data = nodetoDelete.next.data;
+        nodetoDelete.next = null;
+
+        while (head != null) {
+            System.out.println(head.data + " --- head data");
+            head = head.next;
+        }
+    }
+
+    public static void reorderTheListWithRelationToAnInputMaintainTheOrder(int number, Node head) {
+        // head and tail concept . we add new element one by one . at last we combine
+        // all the list
+        Node lessHead = new Node(0); // theis are dummy node . 0 is adjuster by node_head.next.
+        Node equalHead = new Node(0);
+        Node greaterHead = new Node(0);
+
+        Node lessListTail = lessHead;
+        Node equalTail = equalHead;
+        Node greaterTail = greaterHead;
+
+        Node currentNode = head;
+
+        while (currentNode != null) {
+            if (currentNode.data < number) {
+                lessListTail.next = currentNode;
+                lessListTail = lessListTail.next;
+            }
+
+            else if (currentNode.data == number) {
+                equalTail.next = currentNode;
+                equalTail = equalTail.next;
+            }
+
+            else if (currentNode.data > number) {
+                greaterTail.next = currentNode;
+                greaterTail = greaterTail.next;
+            }
+            currentNode = currentNode.next;
+        }
+        greaterTail.next = null;
+
+        // adding node logic
+        equalTail.next = greaterHead.next;
+        if (equalHead.next == null) {
+            lessListTail.next = greaterHead.next;
+        } else {
+
+            lessListTail.next = equalHead.next;
+        }
+
+        while (lessHead.next != null) {
+            System.out.println(lessHead.next.data + " --- mmm head data");
+            lessHead = lessHead.next;
+        }
     }
 }
