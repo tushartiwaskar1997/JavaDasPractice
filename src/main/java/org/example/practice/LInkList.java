@@ -1,8 +1,10 @@
 package org.example.practice;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 
 public class LInkList {
 
@@ -279,6 +281,142 @@ public class LInkList {
         while (lessHead.next != null) {
             System.out.println(lessHead.next.data + " --- mmm head data");
             lessHead = lessHead.next;
+        }
+    }
+
+    public static void merge2SortedLinkedList(Node head1, Node head2) {
+
+        Node pointer1 = head1;
+        Node pointer2 = head2;
+        Node finalList = new Node(0);
+        Node head = finalList;
+
+        while (pointer1 != null || pointer2 != null) {
+
+            if (pointer1 != null && pointer2 != null) {
+                if (pointer1.data < pointer2.data) {
+                    finalList.next = pointer1;
+                    pointer1 = pointer1.next;
+                } else {
+                    finalList.next = pointer2;
+                    pointer2 = pointer2.next;
+                }
+            } else if (pointer1 == null) {
+                finalList.next = pointer2;
+                pointer2 = pointer2.next;
+            } else if (pointer2 == null) {
+                finalList.next = pointer1;
+                pointer1 = pointer1.next;
+            }
+            finalList = finalList.next;
+        }
+        // finalList.next = null;
+
+        while (head != null) {
+            System.out.println(head.data + " ----dfsdfs");
+            head = head.next;
+        }
+    }
+
+    public static void copyRandonNode(Node headNode) {
+        if (headNode == null) {
+            System.out.println("Invalid ");
+            return;
+        }
+        HashMap<Node, Node> map = new HashMap<>();
+        Node p = headNode;
+        while (p != null) {
+            map.put(p, new Node(p.data, null, null));
+            p = p.next;
+        }
+        Node q = headNode;
+        while (q != null) {
+            map.get(q).next = map.get(q.next);
+            map.get(q).prev = map.get(q.prev);
+            q = q.next;
+        }
+        while (headNode != null) {
+            System.out.println(headNode.data + " --copy ");
+            headNode = headNode.next;
+        }
+    }
+
+    static int carryForAdding = 0;
+
+    public static void addTwoNumberRepresentedInLinkList(Node number1, Node number2) {
+        System.out.println(helperMethodToFindLengthOfList(number1) + "  length of node1.");
+        System.out.println(helperMethodToFindLengthOfList(number2) + "  lenght of node2.");
+        int node1Lenght = helperMethodToFindLengthOfList(number1);
+        int node2Lenght = helperMethodToFindLengthOfList(number2);
+        if (node1Lenght < node2Lenght) {
+            number1 = addingZerosAtStarting(number1, node2Lenght - node1Lenght);
+        } else if (node2Lenght < node1Lenght) {
+            number2 = addingZerosAtStarting(number2, node1Lenght - node2Lenght);
+        }
+        Node result = sumHelper(number1, number2);
+        if (carryForAdding > 0) {
+            Node carrayNode = new Node(carryForAdding);
+            carrayNode.next = result;
+            result = carrayNode;
+        }
+        while (result != null) {
+            System.out.println(result.data + " sum result");
+            result = result.next;
+        }
+    }
+
+    public static Node addingZerosAtStarting(Node head, int difference) {
+        for (int i = 0; i < difference; i++) {
+            Node newHead = new Node(0);
+            newHead.next = head;
+            head = newHead;
+        }
+        return head;
+    }
+
+    public static Node sumHelper(Node node1, Node node2) {
+        if (node1 == null && node2 == null) {
+            return null;
+        }
+        Node sumNode = sumHelper(node1.next, node2.next);
+        int sum = node1.data + node2.data + carryForAdding;
+        carryForAdding = sum / 10;
+        Node newNode = new Node(sum % 10);
+        newNode.next = sumNode;
+        return newNode;
+    }
+
+    public static int helperMethodToFindLengthOfList(Node head) {
+        int count = 0;
+        while (head != null) {
+            count++;
+            head = head.next;
+        }
+        return count;
+    }
+
+    public static void findTheCommonPointBetweenTwoList(Node node1, Node node2) {
+
+        int lenghtofA = helperMethodToFindLengthOfList(node1);
+        int lenghtofB = helperMethodToFindLengthOfList(node2);
+        Node p1 = node1;
+        Node p2 = node2;
+        if (lenghtofA > lenghtofB) {
+            for (int i = 0; i < lenghtofA - lenghtofB; i++) {
+                p1 = p1.next;
+            }
+        } else if (lenghtofA < lenghtofB) {
+            for (int i = 0; i < lenghtofB - lenghtofA; i++) {
+                p2 = p2.next;
+            }
+        }
+        while (p1 != null && p2 != null) {
+            if (p1 == p2) {
+                System.out.println(p1.data + " this is intersection point");
+                return;
+            }
+            p1 = p1.next;
+            p2 = p2.next;
         }
     }
 }

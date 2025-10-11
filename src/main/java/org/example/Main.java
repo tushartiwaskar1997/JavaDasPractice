@@ -205,5 +205,9 @@ public class Main {
         deleteTheNodeWhenYouDontKnowHead(node1.next.next, node1); // Deleting node 3
         int[] arrThatNeedToPivot = { 3 ,5 ,8 ,5 ,10, 2, 1 };
         reorderTheListWithRelationToAnInputMaintainTheOrder(5 , creatLinkListFromArray(arrThatNeedToPivot, 1));
+        int[] list1 = { 1 };
+        int[] list2 = { 3 ,4,7};
+        merge2SortedLinkedList(creatLinkListFromArray(list1, 1),creatLinkListFromArray(list2, 1));
+        addTwoNumberRepresentedInLinkList(creatLinkListFromArray(list1, 1),creatLinkListFromArray(list2, 1));
     }
 }
