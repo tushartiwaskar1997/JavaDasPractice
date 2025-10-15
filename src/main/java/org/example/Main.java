@@ -196,18 +196,20 @@ public class Main {
         deleteTheLastNodeFromTheLinkList(creatLinkListFromArray(arrForLinkList, 1), 1);
         int[] arrayToDeleteKthElement = { 3, 1, 3, 2, 4 };
         deleteThekTHNodeFromTheLinkList(creatLinkListFromArray(arrayToDeleteKthElement, 1), 2, 5);
-        Node node1 =  new Node(1);
-        node1.next =  new Node(2);
-        node1.next.next =  new Node(3);
+        Node node1 = new Node(1);
+        node1.next = new Node(2);
+        node1.next.next = new Node(3);
         node1.next.next.next = new Node(4);
-        node1.next.next.next.next  = new Node(5);
-        node1.next.next.next.next.next= new Node(6);
+        node1.next.next.next.next = new Node(5);
+        node1.next.next.next.next.next = new Node(6);
         deleteTheNodeWhenYouDontKnowHead(node1.next.next, node1); // Deleting node 3
-        int[] arrThatNeedToPivot = { 3 ,5 ,8 ,5 ,10, 2, 1 };
-        reorderTheListWithRelationToAnInputMaintainTheOrder(5 , creatLinkListFromArray(arrThatNeedToPivot, 1));
+        int[] arrThatNeedToPivot = { 3, 5, 8, 5, 10, 2, 1 };
+        reorderTheListWithRelationToAnInputMaintainTheOrder(5, creatLinkListFromArray(arrThatNeedToPivot, 1));
         int[] list1 = { 1 };
-        int[] list2 = { 3 ,4,7};
-        merge2SortedLinkedList(creatLinkListFromArray(list1, 1),creatLinkListFromArray(list2, 1));
-        addTwoNumberRepresentedInLinkList(creatLinkListFromArray(list1, 1),creatLinkListFromArray(list2, 1));
+        int[] list2 = { 3, 4, 7 };
+        merge2SortedLinkedList(creatLinkListFromArray(list1, 1), creatLinkListFromArray(list2, 1));
+        addTwoNumberRepresentedInLinkList(creatLinkListFromArray(list1, 1), creatLinkListFromArray(list2, 1));
+        checkIfListIsCircularOrNot(creatLinkListFromArray(list1, 1));
+        printzSortedList(creatLinkListFromArray(arrThatNeedToPivot, 1));
     }
 }

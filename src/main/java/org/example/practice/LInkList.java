@@ -419,4 +419,86 @@ public class LInkList {
             p2 = p2.next;
         }
     }
+
+    public static void checkIfListIsCircularOrNot(Node head) {
+        Node fast = head;
+        Node slow = head;
+        while (fast != null && fast.next != null) {
+            fast = fast.next.next;
+            slow = slow.next;
+            if (fast == slow) {
+                System.out.println("given list is circular.");
+                return;
+            }
+        }
+    }
+
+    public static void removeTheCycleFromTheList(Node head) {
+        Node newList = null;
+        HashSet<Node> set = new HashSet<>();
+        while (head != null) {
+            if (set.contains(head)) {
+                newList.next = null;
+                return;
+            } else {
+                set.add(head);
+                newList = head;
+                head = head.next;
+            }
+        }
+    }
+
+    ///// -------------------------------------//////
+    public static Node findTheMidOfList(Node head) {
+        Node slow = head;
+        Node fast = head.next;
+        while (fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+        System.out.println(slow.data + "  - Mid Node of list.");
+        return slow;
+    }
+
+    public static Node mergeOfTwoList(Node list1, Node list2) {
+
+        Node mergeList = new Node(0);
+        Node tail = mergeList;
+        while (list1 != null && list2 != null) {
+
+            if (list1.data < list2.data) {
+                tail.next = list1;
+                list1 = list1.next;
+            } else {
+                tail.next = list2;
+                list2 = list2.next;
+            }
+            tail = tail.next;
+        }
+        tail.next = (list1 != null) ? list1 : list2;
+        return mergeList.next;
+    }
+
+    public static Node finalMergeOfSortedList(Node heaNode) {
+
+        if (heaNode == null || heaNode.next == null) {
+            return heaNode;
+        }
+        Node mid = findTheMidOfList(heaNode);
+        Node rightHandList = mid.next;
+        mid.next = null;
+        Node left = finalMergeOfSortedList(heaNode);
+        Node right = finalMergeOfSortedList(rightHandList);
+        return mergeOfTwoList(left, right);
+    }
+
+    public static void printzSortedList(Node head) {
+        head = finalMergeOfSortedList(head);
+        while (head != null) {
+            System.out.println(head.data + "   - sorted head data.");
+            head = head.next;
+        }
+    }
+    ///// -------------------------------------//////
+
 }
